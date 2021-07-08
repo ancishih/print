@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media print{
+            @page{
+                margin:0;
+                size:A4 portrait;
+            }
+            body{
+                box-sizing: border-box;
+                margin:0 0.7mm;
+                width:210mm;
+                height: 297mm;
+            }
+            .grid-container{
+                width: 539pt!important;
+                height:215pt!important;
+                display:grid;         
+                grid-template-columns: 4.7%  16.3% 20.5%  20.5% 19% 19%;
+                grid-template-rows: 8.7% 15.1% 9.2% 9.2% 9.2% 9.2% 19.7% 19.7%;
+                grid-gap:0px;
+            }
+        }
+        *{
+            padding:0;
+            margin:0;
+        }
+        body{
+            box-sizing: border-box;
+            width:210mm;
+            height:297mm;
+            margin:0;
+        }
+        .grid-container{
+            margin:0 5px;
+            width:19cm;
+            height:7.6cm;
+            display:grid;         
+            grid-template-columns: 4.7%  16.3% 20.5%  20.5% 19% 19%;
+            grid-template-rows: 8.7% 15.1% 9.2% 9.2% 9.2% 9.2% 19.7% 19.7%;
+            grid-gap:0px;
+        }
+        .flex{
+            display:flex;
+        }
+        .flex-col{
+            flex-direction: column;
+        }
+        .flex-row{
+            flex-direction:row;
+        }
+        .logo{
+            width:8.5cm;
+        }
+        .vlr{
+            -webkit-writing-mode: vertical-lr;
+            -ms-writing-mode: tb-lr;
+            writing-mode: vertical-lr;
+            font-size:12px;
+        }
+        .combine-col1{
+            grid-column: 1/3;
+            grid-row:1;
+            text-align: center;
+            border-top:2px solid black;
+            border-left: 2px solid black;
+            border-right: 1px solid black;
+        }
+        .combine-col2{
+            grid-column: 1/3;
+            grid-row:2;
+            text-align: center;
+            border-left: 2px solid black;
+            border-top:1px solid black;
+            border-right: 1px solid black;
+        }
+        .barcode{
+            grid-column:5/7;
+            grid-row:1/3;
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+        }
+        .receiver-name{
+            grid-column:1;
+            grid-row:3/6;
+            -webkit-writing-mode: vertical-lr;
+            -ms-writing-mode: tb-lr;
+            writing-mode: vertical-lr;
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            border-top:1px solid black;
+            border-left: 2px solid black;
+        }
+        .receiver-address{
+            padding:15px;
+            grid-column:2/5;
+            grid-row:3/6;
+            display:flex;
+            flex-direction:column;
+            overflow: hidden;
+            border-top:1px solid black;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+        }
+        .sender-name{
+            grid-column:1;
+            grid-row:6/8;
+            -webkit-writing-mode: vertical-lr;
+            -ms-writing-mode: tb-lr;
+            writing-mode: vertical-lr;
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            border-left: 2px solid black;
+            border-top:1px solid black;
+            border-bottom:1px solid black;
+        }
+        .sender-address{
+            padding:15px;
+            grid-column:2/5;
+            grid-row:6/8;
+            display:flex;
+            flex-direction:column;
+            overflow: hidden;
+            border:1px solid black;
+        }
+        .remark{
+            -webkit-writing-mode: vertical-lr;
+            -ms-writing-mode: tb-lr;
+            writing-mode: vertical-lr;
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            border-left: 2px solid black;
+            border-bottom: 2px solid black;
+        }
+        .remark-content{
+            padding:15px;
+            grid-column:2/5;
+            border-left:1px solid black;
+            border-right:1px solid black;
+            border-bottom: 2px solid black;
+        }
+        .signature{
+            padding-top:7.5px;
+            grid-column:5/7;
+            grid-row:7/9;
+            text-align: center;
+            border-top: 1px solid black;
+            border-bottom: 2px solid black;
+            border-right: 2px solid black;
+        }
+        .text-center{
+            text-align: center;
+        }
+        .items-center{
+            align-items: center;
+        }
+        .border-t-1{
+            border-top: 1px solid black;
+        }
+        .border-r-1{
+            border-right: 1px solid black;
+        }
+        .border-b-1{
+            border-bottom: 1px solid black;
+        }
+        .border-t-2{
+            border-top: 2px solid black;
+        }
+        .border-r-2{
+            border-right: 2px solid black;
+        }
+        .border-r-b-1{
+            border-right: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        .border-t-r-1{
+            border-right: 1px solid black;
+            border-top:1px solid black;
+        }
+        .text-lg{
+            font-size:24px;
+            letter-spacing:2px;
+            font-weight: 400;
+        }
+        .my-10{
+            margin:8px 0;
+        }
+        .my-20{
+            margin:10px 7mm;
+        }
+        .justify-between{
+            justify-content: space-evenly;
+        }
+        .font-bold{
+            font-weight:700;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex flex-row my-20 justify-center">
+        <div class="flex flex-col">
+            <div class="flex flex-row items-center my-10">
+                <img class="logo" src="./a4 logo.svg" alt="">
+                <div class="text-lg">財務留底單</div>
+            </div>
+            <div class="grid-container">
+                <div class="combine-col1 font-bold">代收金額</div>
+                <div class="text-center border-t-2 border-r-1 font-bold">關稅金額</div>
+                <div class="text-center border-t-2 border-r-2 font-bold">總金額</div>
+                <div class="barcode">
+                    barcode
+                </div>
+                <div class="combine-col2">
+                    {{填代收金額}}
+                </div>
+                <div class="text-center border-t-r-1">
+                    {{填寫關稅金額}}
+                </div>
+                <div class="text-center border-r-2 border-t-1">
+                    {{填寫總金額}}
+                </div>
+                <div class="receiver-name">
+                    <p>收件人</p>
+                </div>
+                <div class="receiver-address">
+                    {{收件人地址}}
+                </div>
+                <div class="text-center border-t-2 border-r-b-1 font-bold">收貨日期</div>
+                <div class="text-center border-t-2 border-r-2 border-b-1 font-bold">配達日期</div>
+                <div class="text-center border-r-b-1">
+                    {{填寫收貨日期}}
+                </div>
+                <div class="text-center border-r-2 border-b-1">
+                    {{填寫配達日期}}
+                </div>
+                <div class="text-center border-r-1 font-bold">到件數</div>
+                <div class="text-center border-r-2 font-bold">總件數</div>
+                <div class="sender-name font-bold">
+                    <p>寄件人</p>
+                </div>
+                <div class="sender-address">
+                    {{寄件人地址}}
+                </div>
+                <div class="text-center border-t-r-1">
+                    {{填寫到件數}}
+                </div>
+                <div class="text-center border-r-2 border-t-1">
+                    {{填寫總件數}}
+                </div>
+                <div class="signature font-bold">收件人簽收 ( 請填寫全名 )</div>
+                <div class="remark font-bold">
+                    <p>備註</p>
+                </div>
+                <div class="remark-content">
+                    {{備註填寫處}}
+                </div> 
+            </div>
+        </div>
+        <div class="vlr">運送物經收貨人或其代理人簽收後，一切損壞送貨人皆不負責。</div>
+    </div>
+    <div class="flex flex-row my-20 justify-center">
+        <div class="flex flex-col">
+            <div class="flex flex-row my-10 items-center">
+                <img class="logo" src="./a4 logo.svg" alt="">
+                <div class="text-lg ">客戶收據單</div>
+            </div>
+            <div class="grid-container">
+                <div class="combine-col1">代收金額</div>
+                <div class="text-center border-t-2 border-r-1">關稅金額</div>
+                <div class="text-center border-t-2 border-r-2">總金額</div>
+                <div class="barcode">
+                    barcode
+                </div>
+                <div class="combine-col2">
+                    {{填代收金額}}
+                </div>
+                <div class="text-center border-t-r-1">
+                    {{填寫關稅金額}}
+                </div>
+                <div class="text-center border-r-2 border-t-1">
+                    {{填寫總金額}}
+                </div>
+                <div class="receiver-name">
+                    <p>收件人</p>
+                </div>
+                <div class="receiver-address">
+                    {{收件人地址}}
+                </div>
+                <div class="text-center border-t-2 border-r-b-1">收貨日期</div>
+                <div class="text-center border-t-2 border-r-2 border-b-1">配達日期</div>
+                <div class="text-center border-r-b-1">
+                    {{填寫收貨日期}}
+                </div>
+                <div class="text-center border-r-2 border-b-1">
+                    {{填寫配達日期}}
+                </div>
+                <div class="text-center border-r-1">到件數</div>
+                <div class="text-center border-r-2">總件數</div>
+                <div class="sender-name">
+                    <p>寄件人</p>
+                </div>
+                <div class="sender-address">
+                    {{寄件人地址}}
+                </div>
+                <div class="text-center border-t-r-1">
+                    {{填寫到件數}}
+                </div>
+                <div class="text-center border-r-2 border-t-1">
+                    {{填寫總件數}}
+                </div>
+                <div class="signature">收件人簽收請填寫全名</div>
+                <div class="remark">
+                    <p>備註</p>
+                </div>
+                <div class="remark-content">
+                    {{備註填寫處}}
+                </div> 
+            </div>
+        </div>
+        <div class="vlr">運送物經收貨人或其代理人簽收後，一切損壞送貨人皆不負責。</div>
+    </div>
+    <div class="flex flex-row my-20 justify-center">
+        <div class="flex flex-col">
+            <div class="flex flex-row items-center my-10">
+                <img class="logo" src="./a4 logo.svg" alt="">
+                <div class="text-lg">客戶簽收單</div>
+            </div>
+            <div class="grid-container">
+                <div class="combine-col1">代收金額</div>
+                <div class="text-center border-t-2 border-r-1">關稅金額</div>
+                <div class="text-center border-t-2 border-r-2">總金額</div>
+                <div class="barcode">
+                    barcode
+                </div>
+                <div class="combine-col2">
+                    {{填代收金額}}
+                </div>
+                <div class="text-center border-t-r-1">
+                    {{填寫關稅金額}}
+                </div>
+                <div class="text-center border-r-2 border-t-1">
+                    {{填寫總金額}}
+                </div>
+                <div class="receiver-name">
+                    <p>收件人</p>
+                </div>
+                <div class="receiver-address">
+                    {{收件人地址}}
+                </div>
+                <div class="text-center border-t-2 border-r-b-1">收貨日期</div>
+                <div class="text-center border-t-2 border-r-2 border-b-1">配達日期</div>
+                <div class="text-center border-r-b-1">
+                    {{填寫收貨日期}}
+                </div>
+                <div class="text-center border-r-2 border-b-1">
+                    {{填寫配達日期}}
+                </div>
+                <div class="text-center border-r-1">到件數</div>
+                <div class="text-center border-r-2">總件數</div>
+                <div class="sender-name">
+                    <p>寄件人</p>
+                </div>
+                <div class="sender-address">
+                    {{寄件人地址}}
+                </div>
+                <div class="text-center border-t-r-1">
+                    {{填寫到件數}}
+                </div>
+                <div class="text-center border-r-2 border-t-1">
+                    {{填寫總件數}}
+                </div>
+                <div class="signature">收件人簽收請填寫全名</div>
+                <div class="remark">
+                    <p>備註</p>
+                </div>
+                <div class="remark-content">
+                    {{備註填寫處}}
+                </div> 
+            </div>
+        </div>
+        <div class="vlr">運送物經收貨人或其代理人簽收後，一切損壞送貨人皆不負責。</div>
+    </div>
+</body>
+</html>

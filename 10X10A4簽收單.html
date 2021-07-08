@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media print{
+            @page{
+                margin:0;
+                size:A4 portrait;
+            }
+            body table{
+            border-collapse:collapse;
+            padding:0;
+            margin:0;
+            width:284pt !important;
+            height:232pt !important;
+            font-weight: 700;
+            font-size:12px;
+            font-family: Microsoft JhengHei;
+            table-layout:fixed;
+            }
+
+        }
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding:0;
+        }
+        .wrapper{
+            margin:2rem;
+            width:10cm;
+            height:10cm;
+            display:flex;
+            flex-direction: column;
+        }
+        .border-1{
+            border:1px solid black;
+        }
+        body table{
+            border-collapse:collapse;
+            padding:0;
+            margin:0;
+            width:10cm;
+            height:82mm;
+            font-weight: 700;
+            font-size:12px;
+            font-family: Microsoft JhengHei;
+            table-layout:fixed;
+        }
+        table tbody tr th{
+            text-align:center;
+        }
+        table tbody tr td{
+            white-space: nowrap;
+            overflow: hidden;
+            padding:0px 30px;
+        }
+        .tbarcode{
+            height:18mm;
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding:0px 10px;
+        }
+        .tbarcode img{
+            width:35mm;
+        }
+    </style>
+</head>
+<body>
+    <div id="print_parts">
+       <div style="page-break-after:always;">
+            <div class="wrapper border-1">
+                <div class="tbarcode">
+                    <img src="./10x10cm logo.svg" >
+                    <div>
+                    這邊Barcode
+                    </div>
+                </div>
+                <table>
+                    <tbody>
+                        <tr style="height:15.3%;">
+                            <th scope="row" colspan="2" class="border-1">寄件人</th>
+                            <td class="border-1" colspan="10">
+                                <div>創力整合行銷 尤泓文</div>
+                                <div>雲林縣虎尾鎮文化路64號</div>
+                                <div>056320163</div>
+                            </td>
+                        </tr>
+                        <tr style="height:15.3%;">
+                            <th scope="row" colspan="2" class="border-1">收件人</th>
+                            <td class="border-1" colspan="10">
+                                <div>創力整合行銷 尤泓文</div>
+                                <div>雲林縣虎尾鎮文化路64號</div>
+                                <div>056320163</div>
+                            </td>
+                        </tr>
+                        <tr style="height:8%;">
+                            <th colspan="2" scope="row" class="border-1">備註</th>
+                            <td class="border-1" colspan="10"></td>
+                        </tr> 
+                        <tr style="height:8%;">
+                            <th style="width:33%;"scope="col" class="border-1" colspan="4">件數</th>
+                            <th style="width:33%;"scope="col" class="border-1" colspan="4">到站數</th>
+                            <th style="width:33%;"scope="col" class="border-1" colspan="4">簽收數</th>
+                        </tr>
+                        <tr style="height:12.1%;">
+                            <td class="border-1" colspan="4"></td>
+                            <td class="border-1" colspan="4"></td>
+                            <td class="border-1" colspan="4"></td>
+                        </tr>
+                        <tr style="height:8%;">
+                            <th scope="col" class="border-1" colspan="6">代收總金額</th>
+                            <th scope="col" class="border-1" colspan="6">簽收人</th>
+                        </tr>
+                        <tr style="height:16%;">
+                            <td class="border-1" colspan="6"></td>
+                            <td class="border-1" colspan="6"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
